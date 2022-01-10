@@ -4,10 +4,6 @@ import Tour from '../components/Tour.astro';
 // You can import components from any supported Framework here!
 import ReactCounter from '../components/ReactCounter.jsx';
 
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
 let title = 'My Astro Site';
 
 // Full Astro Component Syntax:
@@ -15,8 +11,13 @@ let title = 'My Astro Site';
 ---
 <html lang="en">
 <head>
+	<!-- Required meta tags -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Astro Site">
+	<meta name="author" content="Juho Nykänen">
+	<meta name="keywords" content="astro, site, react, react-astro, beer, punkapi, brewdog">
+
 	<title>{title}</title>
 
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -43,17 +44,6 @@ let title = 'My Astro Site';
 		</header>
 
 		<Tour />
-
-		<!--
-
-		You can also use imported framework components directly in your markup!
-		
-		Note: by default, these components are NOT interactive on the client.
-		The `:visible` directive tells Astro to make it interactive.
-		
-		See https://docs.astro.build/core-concepts/component-hydration/ 
-
-		-->
 
 		<ReactCounter client:visible />
 	</main>
