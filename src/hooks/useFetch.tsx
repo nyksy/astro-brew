@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Beer } from '../interfaces/beer'
+import { Beer } from '../interfaces/Beer'
 import { STATUS } from '../utils/constants'
 
 const useFetch = (url: string) => {
@@ -8,16 +8,16 @@ const useFetch = (url: string) => {
 
   useEffect(() => {
     if (!url) return
-    const fetchData = async () => {
-      setStatus(STATUS.FETCHING)
-      const response = await fetch(url)
-      const datares = await response.json()
-      setData(datares)
-      setStatus(STATUS.DONE)
-    }
-
     fetchData()
   }, [url])
+
+  const fetchData = async () => {
+    setStatus(STATUS.FETCHING)
+    const response = await fetch(url)
+    const datares = await response.json()
+    setData(datares)
+    setStatus(STATUS.DONE)
+  }
 
   return { status, beers: data as Beer[] }
 }
