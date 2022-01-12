@@ -2,10 +2,17 @@
 // Component Imports
 import Tour from '../components/Tour.astro';
 // You can import components from any supported Framework here!
-import ReactCounter from '../components/ReactCounter.jsx';
+import ReactCounter from '../components/ReactCounter.tsx';
 
-let title = 'My Astro Site';
+const title = 'My Astro Site';
+const api_url = 'https://api.punkapi.com/v2/beers'
+const random_url = 'https://api.punkapi.com/v2/beers/random'
 
+/*
+const response = await fetch(random_url)
+const data = await response.json()
+console.log(data)
+*/
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---

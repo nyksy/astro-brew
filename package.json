@@ -12,5 +12,8 @@
     "@astrojs/renderer-react": "^0.4.0",
     "astro": "^0.22.9",
     "prettier": "2.5.1"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.38"
   }
 }
