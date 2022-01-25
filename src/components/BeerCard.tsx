@@ -1,4 +1,10 @@
-export const BeerCard = ({ beer }) => {
+import { Beer } from './../interfaces/Beer'
+
+interface Props {
+  beer: Beer
+}
+
+export const BeerCard: React.FC<Props> = ({ beer }) => {
   return (
     <div
       className="card d-flex justify-content-center"

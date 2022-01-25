@@ -8,7 +8,7 @@
 
 Inside of your Astro project, you'll see the following folders and files:
 
-``` xd
+```xd
 /
 ├── public/
 │   ├── robots.txt
@@ -45,6 +45,9 @@ Feel free to check [our documentation](https://github.com/withastro/astro) or ju
 Built with
 Astro
 PunkAPI
+TypeScript
+React
+Bootstrap
 favicon.io https://favicon.io/emoji-favicons/beer-mug/
 https://github.com/othneildrew/Best-README-Template
 
