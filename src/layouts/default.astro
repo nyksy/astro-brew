@@ -1,5 +1,9 @@
 ---
+import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro'
+import BeerMapper from '../components/BeerMapper.tsx'
+import Hero from '../components/Hero.astro'
+import Section from '../components/Section.astro'
 import BaseHead from '../components/BaseHead.astro'
 ---
 <html lang="en">
@@ -7,6 +11,16 @@ import BaseHead from '../components/BaseHead.astro'
     <BaseHead {1} {2} {3} />
 </head>
 <body>
+    <Navigation />
+
+    <Hero />
+
+    <Section />
+
+    <div style="height: 200px;">
+    </div>
+
+    <BeerMapper client:visible />
 
     <Footer />
 </body>

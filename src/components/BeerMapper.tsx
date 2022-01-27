@@ -7,7 +7,7 @@ export default function BeerMapper() {
   const { status, beers } = useFetch(API.PER_PAGE + 3)
 
   return (
-    <div id="react" className="counter">
+    <div id="react" className="counter m-5">
       {status === STATUS.DONE && (
         <div className="container">
           <div className="row justify-content-center">

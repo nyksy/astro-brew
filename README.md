@@ -48,6 +48,7 @@ PunkAPI
 TypeScript
 React
 Bootstrap
+Bootstrap icons
 favicon.io https://favicon.io/emoji-favicons/beer-mug/
 https://github.com/othneildrew/Best-README-Template
 
