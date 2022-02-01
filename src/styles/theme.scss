@@ -1,14 +1,14 @@
-.card,
-.btn,
-.form-control {
-  border-radius: 0;
-}
-
-//colortheme
+//color theme
 $primary: rgb(196, 133, 36);
 $warning: rgb(217, 177, 113);
 $dark: rgb(26, 27, 29);
 $secondary: rgb(75, 71, 72);
 $light: #f3f3f3;
 
-@import "bootstrap";
+@import 'bootstrap';
+
+.card,
+.btn,
+.form-control {
+  border-radius: 0;
+}
