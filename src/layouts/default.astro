@@ -1,26 +1,18 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro'
-import BeerMapper from '../components/BeerMapper.tsx'
-import Hero from '../components/Hero.astro'
-import Section from '../components/Section.astro'
 import BaseHead from '../components/BaseHead.astro'
+
+const { content } = Astro.props
 ---
 <html lang="en">
 <head>
-    <BaseHead {1} {2} {3} />
+    <BaseHead title={content.title} description={content.description}  />
 </head>
 <body>
     <Navigation />
 
-    <Hero />
-
-    <Section />
-
-    <div style="height: 200px;">
-    </div>
-
-    <BeerMapper client:visible />
+    <slot />
 
     <Footer />
 </body>

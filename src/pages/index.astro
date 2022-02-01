@@ -1,21 +1,20 @@
 ---
 // Component Imports
-// You can import components from any supported Framework here!
-import BaseHead from '../components/BaseHead.astro'
-import Footer from '../components/Footer.astro'
+import Hero from '../components/Hero.astro'
+import Section from '../components/Section.astro'
 import DefaultLayout from '../layouts/default.astro'
+import BeerMapper from '../components/BeerMapper.tsx'
 
-const title = 'My Astro Site'
-const api_url = 'https://api.punkapi.com/v2/beers'
-const random_url = 'https://api.punkapi.com/v2/beers/random'
-
-/*
-const response = await fetch(random_url)
-const data = await response.json()
-console.log(data)
-*/
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+const title = 'Frontpage'
+const description = ''
 ---
 
-<DefaultLayout />
+<DefaultLayout content={{ title, description }}>
+  <Hero />
+
+  <Section />
+
+  <div style="height: 200px;"></div>
+
+  <BeerMapper client:visible />
+</DefaultLayout>

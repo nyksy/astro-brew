@@ -1,10 +1,10 @@
 ---
 export interface Props {
   title: string
-  description: string
-  permalink: string
+  description?: string
 }
-const { title, description, permalink } = Astro.props
+
+const { title, description } = Astro.props
 ---
 
 <!-- Global Metadata -->
@@ -13,21 +13,19 @@ const { title, description, permalink } = Astro.props
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{title + ' | DIY DOG'}</title>
+<meta name="title" content={title + ' | DIY DOG'} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={permalink} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={title + ' | DIY DOG'} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content="https://astro.build/social.jpg?v=1" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={permalink} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={title + ' | DIY DOG'} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content="https://astro.build/social.jpg?v=1" />
 

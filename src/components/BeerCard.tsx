@@ -7,7 +7,7 @@ interface Props {
 export const BeerCard: React.FC<Props> = ({ beer }) => {
   return (
     <div
-      className="card d-flex justify-content-center"
+      className="card d-flex justify-content-center bg-primary"
       style={{ width: '20rem', height: '20rem' }}
     >
       <div className="card-body mw-100">
@@ -27,7 +27,7 @@ export const BeerCard: React.FC<Props> = ({ beer }) => {
           <h3 className="fw-bold">{beer.name}</h3>
           <p>{beer.tagline}</p>
           <p className="text-start">
-            <span className="badge rounded-pill bg-primary">{beer.abv} %</span>
+            <span className="badge rounded-pill bg-dark">{beer.abv} %</span>
           </p>
         </div>
       </div>
