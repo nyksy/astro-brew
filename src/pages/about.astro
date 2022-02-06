@@ -1,10 +1,50 @@
 ---
 import DefaultLayout from '../layouts/default.astro'
+import Container from '../components/Container.astro'
+import BasicHero from '../components/BasicHero.astro'
+import MapSection from '../components/MapSection.astro'
 
 const title = 'About'
 const description = ''
 ---
 
 <DefaultLayout content={{ title, description }}>
-  <h1>About</h1>
+  <BasicHero>About</BasicHero>
+
+  <Container>
+    <div class="row text-white">
+      <div class="col my-5">
+        <div class="text-center text-uppercase m-3">
+          <h2 class="fw-bolder">About Brewdog</h2>
+        </div>
+        <p>
+          Brewdog is a brewery based in London, UK. We are a small, family-owned
+          brewery with a focus on craft beer. We are proud to be a part of the
+          London craft beer scene and we are always looking for new and exciting
+          collaborations.
+        </p>
+      </div>
+    </div>
+
+    <div class="row text-white">
+      <div class="col my-5">
+        <div class="text-center text-uppercase m-3">
+          <h2 class="fw-bolder">Our Story</h2>
+        </div>
+        <p>
+          Brewdog was founded in 2013 by a group of friends who wanted to create
+          something special. We started with a simple idea of creating a beer
+          company that would be able to offer a unique experience to our
+          customers and be able to offer a unique experience to our customers.
+        </p>
+        <p>
+          We have since then grown into a brewery and have been able to offer a
+          unique experience to our customers and be able to offer a unique
+          experience to our customers.
+        </p>
+      </div>
+    </div>
+  </Container>
+
+  <MapSection />
 </DefaultLayout>

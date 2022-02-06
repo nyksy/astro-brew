@@ -25,6 +25,7 @@
     "postcss": "^8.4.5",
     "postcss-import": "^14.0.2",
     "postcss-scss": "^4.0.3",
-    "prettier-plugin-astro": "^0.0.12"
+    "prettier-plugin-astro": "^0.0.12",
+    "react-simple-maps": "^2.3.0"
   }
 }
