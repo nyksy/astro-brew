@@ -3,6 +3,7 @@ import {
   ComposableMap,
   Geographies,
   Geography,
+  Graticule,
   Marker,
 } from 'react-simple-maps'
 
@@ -11,21 +12,28 @@ const geoUrl =
 
 const MapComponent = () => {
   return (
-    <ComposableMap projection="geoAlbers">
+    <ComposableMap
+      projection="geoAzimuthalEqualArea"
+      projectionConfig={{
+        rotate: [-20.0, -52.0, 0],
+        scale: 800,
+      }}
+    >
+      <Graticule stroke="#EAEAEC" />
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => (
             <Geography
               key={geo.rsmKey}
               geography={geo}
-              fill="#FFF"
-              stroke="#FFF"
+              fill="rgb(217, 177, 113)"
+              stroke="black"
             />
           ))
         }
       </Geographies>
-      <Marker coordinates={[-74.006, 40.7128]}>
-        <circle r={8} fill="#F53" />
+      <Marker coordinates={[-2.0493847744981104, 57.369674476690825]}>
+        <circle r={10} fill="#FFF" />
       </Marker>
     </ComposableMap>
   )

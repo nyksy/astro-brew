@@ -1,10 +1,20 @@
 ---
 import DefaultLayout from '../layouts/default.astro'
+import BasicHero from '../components/BasicHero.astro'
+import Container from '../components/Container.astro'
+import BeerMapper from '../components/BeerMapper.tsx'
 
 const title = 'Beers'
 const description = ''
 ---
 
 <DefaultLayout content={{ title, description }}>
-<h1>Beers</h1>
+  <BasicHero>
+    <h1 class="display-2 fw-bolder text-white text-uppercase">Beers</h1>
+    <p class="lead fw-normal text-white">Browse the catalogue</p>
+  </BasicHero>
+
+  <Container>
+    <BeerMapper client:visible />
+  </Container>
 </DefaultLayout>
