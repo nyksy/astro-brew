@@ -31,7 +31,7 @@ const description = ''
     <h1 class="display-2 fw-bolder text-white text-uppercase">
       {selectedBeer?.name}
     </h1>
-    <h3 class="text-swhite mb-4">
+    <h3 class="text-white mb-4">
       {selectedBeer?.tagline}
       <span class="badge rounded-pill bg-primary me-1">
         {selectedBeer?.abv} %
@@ -40,12 +40,29 @@ const description = ''
         {selectedBeer?.first_brewed}
       </span>
     </h3>
-    <p class="lead fw-normal text-white">
-      {selectedBeer?.description}
-    </p>
   </BasicHero>
 
   <Container>
-    <Section />
+    <Section>
+      <div class="col-12col-sm-8 col-lg-6 text-center">
+        <img
+          src={selectedBeer?.image_url}
+          class="d-block mx-auto"
+          alt={selectedBeer?.name}
+          height="500"
+          loading="lazy"
+        />
+      </div>
+      <div class="col-lg-6 text-start">
+        <h2 class="display-5 fw-bold lh-1 mb-3 text-white">Description</h2>
+        <p class="lead text-white text-justify">
+          {selectedBeer?.description}
+        </p>
+        <h2 class="display-5 fw-bold lh-1 mb-3 text-white">Brewer's tips</h2>
+        <p class="lead text-white">
+          {selectedBeer?.brewers_tips}
+        </p>
+      </div>
+    </Section>
   </Container>
 </DefaultLayout>
