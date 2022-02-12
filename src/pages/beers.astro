@@ -15,6 +15,6 @@ const description = ''
   </BasicHero>
 
   <Container>
-    <BeerMapper client:visible />
+    <BeerMapper page={1} limit={25} client:load />
   </Container>
 </DefaultLayout>

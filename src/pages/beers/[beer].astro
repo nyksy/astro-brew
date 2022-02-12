@@ -1,0 +1,50 @@
+---
+import BasicHero from '../../components/BasicHero.astro'
+import Container from '../../components/Container.astro'
+import Section from '../../components/Section.astro'
+import DefaultLayout from '../../layouts/default.astro'
+import { API } from '../../utils/constants'
+
+const { beer } = Astro.request.params
+
+export async function getStaticPaths() {
+  const paths = []
+
+  for (let i = 0; i <= 325; i++) {
+    paths.push({ params: { beer: i.toString() } })
+  }
+
+  return paths
+}
+
+const response = await fetch(API.BEERS + beer)
+const beerdata = await response.json()
+
+const selectedBeer = beerdata[0]
+
+const title = selectedBeer.name
+const description = ''
+---
+
+<DefaultLayout content={{ title, description }}>
+  <BasicHero>
+    <h1 class="display-2 fw-bolder text-white text-uppercase">
+      {selectedBeer.name}
+    </h1>
+    <h3>
+      <span class="badge rounded-pill bg-primary me-1">
+        {selectedBeer.abv} %
+      </span>
+      <span class="badge rounded-pill bg-primary">
+        {selectedBeer.first_brewed}
+      </span>
+    </h3>
+    <p class="lead fw-normal text-white">
+      {selectedBeer.description}
+    </p>
+  </BasicHero>
+
+  <Container>
+    <Section />
+  </Container>
+</DefaultLayout>
