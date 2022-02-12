@@ -2,73 +2,8 @@
   <div class="py-5">
     <div class="container">
       <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-          <img
-            src="/assets/can.jpg"
-            class="d-block mx-lg-auto img-fluid"
-            alt="Bootstrap Themes"
-            width="700"
-            height="500"
-            loading="lazy"
-          />
-        </div>
-        <div class="col-lg-6 text-start">
-          <h1 class="display-5 fw-bold lh-1 mb-3 text-white">
-            The recipe for every single beer <span class="text-warning"
-              >Brewdog</span
-            > has ever made
-          </h1>
-          <p class="lead text-white">
-            Brewdog wanted to do something different with DIY Dog while also
-            paying homage to their homebrewing roots. They wanted to give away
-            all of their recipes, every single one, for free to the incredible
-            global home-brewing community. The recipe packs were created
-            according to the DIY Dog recipe's specifications.
-          </p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a href="/beers">
-              <button type="button" class="btn btn-warning btn-lg px-4 me-md-2">
-                Browse
-              </button>
-            </a>
-            <a href="/about">
-              <button type="button" class="btn btn-light btn-lg px-4">
-                About BrewDog
-              </button>
-            </a>
-          </div>
-        </div>
+        <slot />
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .b-example-divider {
-    height: 3rem;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: solid rgba(0, 0, 0, 0.15);
-    border-width: 1px 0;
-    box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
-      inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
-  }
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
-
-  @media (min-width: 992px) {
-    .rounded-lg-3 {
-      border-radius: 0.3rem;
-    }
-  }
-</style>
