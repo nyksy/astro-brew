@@ -22,26 +22,26 @@ const beerdata = await response.json()
 
 const selectedBeer = beerdata[0]
 
-const title = selectedBeer.name
+const title = selectedBeer?.name
 const description = ''
 ---
 
 <DefaultLayout content={{ title, description }}>
   <BasicHero>
     <h1 class="display-2 fw-bolder text-white text-uppercase">
-      {selectedBeer.name}
+      {selectedBeer?.name}
     </h1>
-    <h3 class="text-white mb-4">
-      {selectedBeer.tagline}
+    <h3 class="text-swhite mb-4">
+      {selectedBeer?.tagline}
       <span class="badge rounded-pill bg-primary me-1">
-        {selectedBeer.abv} %
+        {selectedBeer?.abv} %
       </span>
       <span class="badge rounded-pill bg-primary">
-        {selectedBeer.first_brewed}
+        {selectedBeer?.first_brewed}
       </span>
     </h3>
     <p class="lead fw-normal text-white">
-      {selectedBeer.description}
+      {selectedBeer?.description}
     </p>
   </BasicHero>
 
