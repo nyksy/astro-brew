@@ -4,8 +4,19 @@ import BasicHero from '../components/BasicHero.astro'
 import Container from '../components/Container.astro'
 import BeerMapper from '../components/BeerMapper.tsx'
 
+const pagelimit = 30
+const lim = Math.round(325 / pagelimit)
+
 const title = 'Beers'
 const description = ''
+
+const pages = () => {
+  const pages = []
+  for (let i = 1; i <= lim; i++) {
+    pages.push(i)
+  }
+  return pages
+}
 ---
 
 <DefaultLayout content={{ title, description }}>
@@ -15,6 +26,6 @@ const description = ''
   </BasicHero>
 
   <Container>
-    <BeerMapper page={1} limit={25} client:load />
+    <BeerMapper page={1} limit={pagelimit} client:load />
   </Container>
 </DefaultLayout>

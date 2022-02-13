@@ -10,7 +10,7 @@ const { beer } = Astro.request.params
 export async function getStaticPaths() {
   const paths = []
 
-  for (let i = 0; i <= 325; i++) {
+  for (let i = 1; i <= 325; i++) {
     paths.push({ params: { beer: i.toString() } })
   }
 
@@ -203,7 +203,7 @@ const description = ''
           </tbody>
         </table>
 
-        <h2 class="mt-3">Contributed by</h2>
+        <h2 class="mt-2">Contributed by</h2>
         <p>
           {parseContributedBy(selectedBeer?.contributed_by)}
         </p>
