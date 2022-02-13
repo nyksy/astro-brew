@@ -1,9 +1,9 @@
 ---
 import BasicHero from '../../components/BasicHero.astro'
 import Container from '../../components/Container.astro'
-import Section from '../../components/Section.astro'
 import DefaultLayout from '../../layouts/default.astro'
 import { API } from '../../utils/constants'
+import { Hop, Malt } from '../../interfaces/Beer'
 
 const { beer } = Astro.request.params
 
@@ -22,6 +22,12 @@ const beerdata = await response.json()
 
 const selectedBeer = beerdata[0]
 
+const parseContributedBy = (contributedBy: string) => {
+  //replace < and > with amp
+  const parsed = contributedBy.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  return parsed
+}
+
 const title = selectedBeer?.name
 const description = ''
 ---
@@ -34,28 +40,17 @@ const description = ''
     <h3 class="text-white mb-4">
       {selectedBeer?.tagline}
       <span class="badge rounded-pill bg-primary me-1">
-        {selectedBeer?.abv} %
+        Abv {selectedBeer?.abv} %
       </span>
       <span class="badge rounded-pill bg-primary">
-        {selectedBeer?.first_brewed}
+        First brewed {selectedBeer?.first_brewed}
       </span>
     </h3>
   </BasicHero>
 
   <Container>
-    <Section>
-      <div
-        class="col-12 col-sm-8 col-lg-6 text-center bg-primary p-4 beer-card"
-      >
-        <img
-          src={selectedBeer?.image_url}
-          class="d-block mx-auto"
-          alt={selectedBeer?.name}
-          height="500"
-          loading="lazy"
-        />
-      </div>
-      <div class="col-lg-6 text-start">
+    <div class="row mt-5 justify-content-center">
+      <div class="col-lg-4 text-start m-5 ">
         <h2 class="display-5 fw-bold lh-1 mb-3 text-white">Description</h2>
 
         <p class="lead text-white text-justify">
@@ -67,7 +62,152 @@ const description = ''
         <p class="lead text-white">
           {selectedBeer?.brewers_tips}
         </p>
+
+        <h2 class="display-5 fw-bold lh-1 mb-3 text-white">Food pairing</h2>
+        <ul>
+          {selectedBeer?.food_pairing.map((food) => (
+            <li class="text-white">{food}</li>
+          ))}
+        </ul>
+
+        <p class="lead text-white">
+          <!--{selectedBeer?.contributed_by}-->
+        </p>
       </div>
-    </Section>
+      <div class="col-12 col-sm-8 col-lg-4 text-center m-5">
+        <div class="beer-card bg-primary p-4">
+          <img
+            src={selectedBeer?.image_url}
+            class="d-block mx-auto"
+            alt={selectedBeer?.name}
+            height="500"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 col-table">
+        <h2>Basics</h2>
+
+        <table class="table table-dark table-striped mb-0">
+          <tbody>
+            <tr>
+              <td>Volume</td>
+              <td>{selectedBeer?.volume?.value}</td>
+              <td>{selectedBeer?.volume?.unit}</td>
+            </tr>
+            <tr>
+              <td>Boil volume</td>
+              <td>{selectedBeer?.boil_volume?.value}</td>
+              <td>{selectedBeer?.boil_volume?.unit}</td>
+            </tr>
+            <tr>
+              <td colspan="2">Abv</td>
+              <td>{selectedBeer?.abv} %</td>
+            </tr>
+            <tr>
+              <td colspan="2">Target FG</td>
+              <td>{selectedBeer?.target_fg}</td>
+            </tr>
+            <tr>
+              <td colspan="2">Target OG</td>
+              <td>{selectedBeer?.target_og}</td>
+            </tr>
+            <tr>
+              <td colspan="2">EBC</td>
+              <td>{selectedBeer?.ebc}</td>
+            </tr>
+            <tr>
+              <td colspan="2">SRM</td>
+              <td>{selectedBeer?.srm}</td>
+            </tr>
+            <tr>
+              <td colspan="2">SRM</td>
+              <td>{selectedBeer?.srm}</td>
+            </tr>
+            <tr>
+              <td colspan="2">PH</td>
+              <td>{selectedBeer?.ph}</td>
+            </tr>
+            <tr>
+              <td colspan="2">Attenuation level</td>
+              <td>{selectedBeer?.attenuation_level}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-2">Method</h2>
+
+        <h3>Mash temp</h3>
+        <table class="table table-dark table-striped mb-0">
+          <tbody>
+            {selectedBeer?.method?.mash_temp.map((temp) => (
+              <tr>
+                <td>{temp.duration}</td>
+                <td>{temp.temp.value}</td>
+                <td>{temp.temp.unit}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h3>Fermentation</h3>
+        <table class="table table-dark table-striped mb-0">
+          <tbody>
+            <tr>
+              <td>{selectedBeer?.method?.fermentation?.temp.value}</td>
+              <td>{selectedBeer?.method?.fermentation?.temp.unit}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 col-table">
+        <h2>Ingredients</h2>
+
+        <h3>Malt</h3>
+        <table class="table table-dark table-striped mb-0">
+          <tbody>
+            {selectedBeer?.ingredients?.malt.map((malt: Malt) => (
+              <tr>
+                <td>{malt.name}</td>
+                <td>{malt.amount.value}</td>
+                <td>{malt.amount.unit}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h3>Hops</h3>
+        <table class="table table-dark table-striped mb-0">
+          <tbody>
+            {selectedBeer?.ingredients?.hops.map((hops: Hop) => (
+              <tr>
+                <td>{hops.name}</td>
+                <td>{hops.amount.value}</td>
+                <td>{hops.amount.unit}</td>
+                <td>{hops.attribute}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h3>Yeast</h3>
+        <table class="table table-dark table-striped mb-0">
+          <tbody>
+            <tr>
+              <td>{selectedBeer?.ingredients.yeast}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-3">Contributed by</h2>
+        <p>
+          {parseContributedBy(selectedBeer?.contributed_by)}
+        </p>
+      </div>
+    </div>
   </Container>
 </DefaultLayout>
