@@ -6,7 +6,7 @@ interface Props {
 
 export const BeerCard: React.FC<Props> = ({ beer }) => {
   return (
-    <a href={`/beers/${beer.id}`} className="text-dark">
+    <a href={`/beers/beer/${beer.id}`} className="text-dark">
       <div
         className="card d-flex justify-content-center bg-primary my-4 beer-card"
         style={{ width: '320px', height: '400px', cursor: 'pointer' }}

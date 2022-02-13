@@ -1,0 +1,59 @@
+---
+import DefaultLayout from '../../layouts/default.astro'
+import BasicHero from '../../components/BasicHero.astro'
+import Container from '../../components/Container.astro'
+import BeerMapper from '../../components/BeerMapper.tsx'
+
+const pagelimit = 30
+const lim = Math.round(325 / pagelimit)
+
+const { beers } = Astro.request.params
+
+export async function getStaticPaths() {
+  const paths = []
+
+  for (let i = 1; i <= 11; i++) {
+    paths.push({ params: { beers: i.toString() } })
+  }
+
+  return paths
+}
+
+const title = 'Beers'
+const description = ''
+
+console.log(beers)
+---
+
+<DefaultLayout content={{ title, description }}>
+  <BasicHero>
+    <h1 class="display-2 fw-bolder text-white text-uppercase">Beers</h1>
+    <p class="lead fw-normal text-white">Browse the catalogue</p>
+  </BasicHero>
+
+  <Container>
+    <BeerMapper page={beers} limit={pagelimit} client:only />
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4 d-flex justify-content-center">
+        <ul class="pagination bg-dark">
+          <li class="page-item">
+            <a class="page-link bg-dark" href="#">Previous</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link bg-dark" href="/beers/1">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link bg-dark" href="/beers/2">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link bg-dark" href="/beers/3">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link bg-dark" href="/beers/4">Next</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Container>
+</DefaultLayout>
