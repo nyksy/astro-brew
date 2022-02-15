@@ -1,6 +1,8 @@
 {
   "name": "astro-brew",
   "short_name": "astro-brew",
+  "description": "BrewDogs DIY DOD catalogue implemented with Astro",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +15,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "rgb(217, 177, 113)",
+  "background_color": "rgb(26, 27, 29)",
   "display": "standalone"
 }
